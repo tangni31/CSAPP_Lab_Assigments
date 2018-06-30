@@ -9,6 +9,6 @@ Test files and other materials: [shlab-handout.tar](http://csapp.cs.cmu.edu/3e/s
  - `jobs`: List the running and stopped background jobs.   
  - `bg <job>`: Change a stopped background job to a running background job.  
  - `fg <job>`: Change a stopped or running background job to a running in the foreground.  
- - `quit`: exit shell.  
- 
- 
+ - `quit`: exit shell.   
+    
+    ![shell](https://raw.githubusercontent.com/tangni31/CSAPP_Lab_Assigments/master/shell%20lab/shell.png?raw=true)

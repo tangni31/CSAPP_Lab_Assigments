@@ -307,7 +307,7 @@ int builtin_cmd(char **argv, int argc)
 void do_bgfg(char **argv, int argc) 
 {
     if (argc != 2){
-	printf("%s 111command requrise PID or %%jobid argument\n", argv[0]);
+	printf("%s command requrise PID or %%jobid argument\n", argv[0]);
 	fflush(stdout);
 	return;
     }
@@ -322,7 +322,7 @@ void do_bgfg(char **argv, int argc)
 	jid = atoi(&(id[1]));
 	
 	if(jid == 0){ /*invalid jobid*/
-	    printf("%s 222command requrise PID or %%jobid argument\n", argv[0]);
+	    printf("%s command requrise PID or %%jobid argument\n", argv[0]);
 	    fflush(stdout);
 	    return;
 	}
@@ -330,7 +330,7 @@ void do_bgfg(char **argv, int argc)
     else{ /*input is a pid*/
 	jid = atoi(id);
 	if(jid == 0){ /*invalid pid*/
-	    printf("%s 333command requrise PID or %%jobid argument\n", argv[0]);
+	    printf("%s command requrise PID or %%jobid argument\n", argv[0]);
 	    fflush(stdout);
 	    return;
 	}
@@ -342,7 +342,7 @@ void do_bgfg(char **argv, int argc)
     job = getjobjid(jobs, jid);/*get job*/
     
     if(job == NULL){
-	printf("(%s): No such process\n", id);
+	printf("(%s): No such job\n", id);
 	fflush(stdout);
 	sigprocmask(SIG_SETMASK, &prev_all, NULL);
 	return;
@@ -430,7 +430,7 @@ void sigchld_handler(int sig)
 	    wait_fg = 1;
 	if(WIFSTOPPED(status)){
 	    job->state = ST;
-	    printf("Job [%d] (%d) terminated by signal %d\n", job->jid, job->pid, WSTOPSIG(status));
+	    printf("Job [%d] (%d) stopped by signal %d\n", job->jid, job->pid, WSTOPSIG(status));
 	}
 	else{
 	    if(WIFSIGNALED(status)){
